@@ -1,1 +1,18 @@
-<p>by-capital-page works!</p>
+<h2>By Capital</h2>
+<hr />
+<div class="row">
+  <div class="col">
+    <!-- searchBox -->
+    <shared-search-box
+      (onValue)="searchByCapital($event)"
+      placeholder="Bogotá, Madrid, etc.."
+    ></shared-search-box>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <hr />
+    Results table
+  </div>
+</div>
