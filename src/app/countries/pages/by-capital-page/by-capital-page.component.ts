@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { CountriesService } from '../../services/countries.service';
 
 @Component({
   selector: 'countries-by-capital-page',
@@ -6,8 +7,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styles: ``,
 })
 export class ByCapitalPageComponent {
+  constructor(private countriesService: CountriesService) {}
   searchByCapital(term: string) {
-    console.log('Desde ByCapitalPage');
-    console.log({ term });
+    this.countriesService.searchCapital(term);
   }
 }
