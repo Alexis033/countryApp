@@ -25,6 +25,7 @@ export class CountryPageComponent implements OnInit {
           return this.router.navigate(['']);
         }
         this.country = country;
+        console.log(this.country.translations);
         return;
       });
   }
