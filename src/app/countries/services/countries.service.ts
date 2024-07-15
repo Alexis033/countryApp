@@ -11,7 +11,10 @@ export class CountriesService {
     query: string,
   ): Observable<Country[]> {
     const url = `${this.apiUrl}/${route}/${query}`;
-    return this.http.get<Country[]>(url).pipe(catchError((error) => of([])), delay(2000));
+    return this.http.get<Country[]>(url).pipe(
+      catchError((error) => of([])),
+      delay(300),
+    );
   }
 
   constructor(private http: HttpClient) {}
