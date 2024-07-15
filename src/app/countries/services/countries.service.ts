@@ -6,15 +6,13 @@ import { Country } from '../interfaces/country';
 @Injectable({ providedIn: 'root' })
 export class CountriesService {
   private apiUrl = 'https://restcountries.com/v3.1';
+
   private getCountriesRequest(
     route: string,
     query: string,
   ): Observable<Country[]> {
     const url = `${this.apiUrl}/${route}/${query}`;
-    return this.http.get<Country[]>(url).pipe(
-      catchError((error) => of([])),
-      delay(300),
-    );
+    return this.http.get<Country[]>(url).pipe(catchError((error) => of([])));
   }
 
   constructor(private http: HttpClient) {}

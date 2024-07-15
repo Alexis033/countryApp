@@ -5,7 +5,8 @@ import { CountriesService } from '../../services/countries.service';
 @Component({
   selector: 'countries-by-region-page',
   templateUrl: './by-region-page.component.html',
-  styles: ``,
+  styles: `
+  `,
 })
 export class ByRegionPageComponent {
   public countries: Country[] = [];
