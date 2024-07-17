@@ -12,4 +12,7 @@ import { Country } from '../../interfaces/country';
 export class CountryTableComponent {
   @Input()
   public countries: Country[] = [];
+
+  @Input()
+  public message: string = 'There is not countries to show';
 }
