@@ -13,7 +13,21 @@ export class CountriesService {
     byCountry: { term: '', countries: [] },
     byRegion: { region: undefined, countries: [] },
   };
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.loadFromLocalStorage();
+  }
+
+  private saveToLocalStorage() {
+    localStorage.setItem('cacheStore', JSON.stringify(this.cacheStore));
+  }
+
+  private loadFromLocalStorage() {
+    const cacheStoreJson = localStorage.getItem('cacheStore');
+    if (cacheStoreJson !== null) {
+      this.cacheStore = JSON.parse(cacheStoreJson);
+    }
+    return;
+  }
 
   private getCountriesRequest(
     route: string,
@@ -28,6 +42,7 @@ export class CountriesService {
       tap((countries) => {
         this.cacheStore.byCapital = { term: capital, countries };
       }),
+      tap(() => this.saveToLocalStorage()),
     );
   }
 
@@ -36,6 +51,7 @@ export class CountriesService {
       tap((countries) => {
         this.cacheStore.byCountry = { term: country, countries };
       }),
+      tap(() => this.saveToLocalStorage()),
     );
   }
 
@@ -44,6 +60,7 @@ export class CountriesService {
       tap((countries) => {
         this.cacheStore.byRegion = { region, countries };
       }),
+      tap(() => this.saveToLocalStorage()),
     );
   }
 
