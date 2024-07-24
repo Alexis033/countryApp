@@ -5,6 +5,7 @@
     <shared-search-box
       (onValue)="searchByCapital($event)"
       (onDebounce)="searchByCapital($event)"
+      [initialValue]="initialValue"
       placeholder="Bogotá, Madrid, etc.."
     ></shared-search-box>
   </div>
